@@ -1,0 +1,833 @@
+/*red error box*/
+.error-box {
+  background-color: #ffdddd;
+  color: #a10000;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+/*green error box*/
+.success-box {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+/* login page background */
+.login-body {
+  margin: 0;
+  height: 100vh;
+  background: url("/assets/loginpageIMG.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Dark overlay */
+.login-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* dark transparent layer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Login box */
+.login-box {
+  background: white;
+  padding: 30px;
+  width: 350px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+.login-box input {
+  width: 94%;
+  padding: 8px;
+  margin-top: 5px;
+}
+.btn-secondary2{
+  width: 100%;
+  padding: 10px;
+  background: #2c2c2c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+}
+.btn-sec3{
+  width: 100%;
+  padding: 10px;
+  background: #2c2c2c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+.btn-sec3:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
+}
+.btn-secondary2:hover {
+  background: #444;
+}
+/* map */
+#map {
+  height: 500px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+
+
+/* Home Page Layout */
+.home-body {
+  margin: 0;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  position: relative;
+  background: #f7f7fb;
+}
+
+/* Pink Top Left Blob */
+.home-body::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  border-radius: 50%;
+  top: -150px;
+  left: -150px;
+  z-index: 0;
+}
+/* Purple Bottom Blob */
+.home-body::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  border-radius: 50%;
+  bottom: -200px;
+  right: -200px;
+  z-index: 0;
+}
+/* MAIN WRAPPER */
+.home-wrapper {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;        /* vertical center */
+  justify-content: center;    /* horizontal center */
+
+  gap: 80px;                  /* space between left & right */
+
+  height: 100vh;
+  max-width: 1200px;          /* prevents stretching too wide */
+  margin: 0 auto;             /* center horizontally */
+}
+/* LEFT SIDE */
+.home-left {
+  width: 50%;
+  color: #2c2c2c;
+}
+.hero-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* BUTTONS */
+.home-buttons a {
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
+}
+
+.btn-secondary {
+  background: #2c2c2c;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #444;
+}
+
+/* RIGHT IMAGE */
+.home-right {
+  width: 50%;
+}
+
+.home-right img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  justify-content: center;
+}
+
+
+
+/* Dashboard Layout */
+/* =========================
+   DASHBOARD LAYOUT
+========================= */
+
+.dashboard-body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* =========================
+   TOP SECTION
+========================= */
+
+.dashboard-top {
+  padding: 0px 50px 30px 50px;
+  background: linear-gradient(to bottom, #f4f6f9, #e9ecf1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.dashboard-top h1 {
+  margin: 15px 0 5px 0;
+  font-size: 32px;
+  font-weight: 700;
+
+  background: linear-gradient(90deg, #7f505a, #e1be40, #2dafe2);
+  background-size: 300% 300%;
+
+  background-clip: text;          /* Standard */
+  -webkit-background-clip: text;  /* Chrome/Safari */
+
+  color: transparent;             /* Standard */
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.dashboard-top h2 {
+  margin: 10;
+  color: #666;
+}
+
+/* Buttons Row */
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+/* =========================
+   MAP SECTION
+========================= */
+
+.dashboard-map {
+  flex: 1;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-primary,
+.btn-secondary {
+  padding: 10px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+}
+
+.btn-secondary {
+  background: #2c2c2c;
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
+}
+
+.btn-secondary:hover {
+  background: #444;
+}
+
+/*this is for zoom marker*/
+.dashboard-content{
+  display:flex;
+  gap: 20px;
+  height:calc(100vh - 120px);
+  background:#f5f6fa;
+}
+
+/* SIDEBAR */
+
+.event-sidebar{
+  width:280px;
+  background:linear-gradient(180deg,#ffffff,#f4f6fb);
+  padding:20px;
+  overflow-y:auto;
+  border-right:1px solid #e2e6ef;
+  box-shadow:2px 0 10px rgba(0,0,0,0.04);
+}
+
+/* Sidebar title */
+
+.event-sidebar h3{
+  font-size:18px;
+  margin-bottom:15px;
+  font-weight:600;
+  color:#333;
+  border-bottom:1px solid #eee;
+  padding-bottom:8px;
+}
+
+/* EVENT CARD */
+
+.event-card{
+  background:white;
+  padding:14px;
+  margin-bottom:14px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:all 0.25s ease;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+  border-left:4px solid transparent;
+}
+
+/* title */
+
+.event-card b{
+  font-size:15px;
+  color:#222;
+}
+
+/* description */
+
+.event-card p{
+  margin-top:5px;
+  font-size:13px;
+  color:#666;
+}
+
+/* hover effect */
+
+.event-card:hover{
+  background:#fafbff;
+  transform:translateY(-3px);
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  border-left:4px solid #06f957;
+}
+
+/* MAP AREA */
+
+.dashboard-map{
+  flex:1;
+  position:relative;
+  height: 100%;
+}
+
+/* MAP */
+
+#map{
+  height:500px;
+  width:100%;
+  border-left:1px solid #eee;
+}
+
+/*delete button in dashboard*/
+.delete-btn{
+  margin-top:8px;
+  padding:6px 10px;
+  border:none;
+  border-radius:12px;
+  background:#ff4b2b;
+  color:white;
+  font-size:12px;
+  cursor:pointer;
+  transition:0.2s;
+  font-weight: 600;
+}
+
+.delete-btn:hover{
+  background:#e03a1d;
+}
+
+/*Registration page*/
+/* REGISTER PAGE BACKGROUND */
+.register-body{
+  height:100vh;
+  margin:0;
+  background:url("/assets/locationMap_1510x682.png");
+  background-size:cover;
+  background-position:center;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* DARK OVERLAY */
+.register-overlay{
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(8, 8, 8, 0.81);
+}
+
+/* FORM CARD */
+.register-card{
+  width:360px;
+  max-width: 90%;
+  padding:25px;
+  border-radius:12px;
+  font-family: 'Times New Roman', Times, serif;
+  background:rgba(255, 255, 255, 0.9);
+  backdrop-filter:blur(6px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* TITLE */
+.register-card h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+/* LABELS */
+.register-card label{
+  font-weight:600;
+  font-size:14px;
+}
+
+/* INPUT FIELDS */
+.register-card input{
+  width:94%;
+  padding:10px;
+  margin-top:5px;
+  margin-bottom:15px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+/* BUTTON */
+.btn-sec3{
+  width:100%;
+  padding:12px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  border:none;
+  border-radius:12px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn-sec3:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
+}
+
+/* ERROR */
+.error-box{
+  background:#ffe0e0;
+  color:#b00020;
+  padding:8px;
+  margin-bottom:15px;
+  border-radius:5px;
+  text-align:center;
+}
+
+
+/* CREATE EVENT PAGE */
+.create-event-body{
+  height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background-image:url("/assets/create-eventIMG.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+}
+
+/* CARD */
+.create-event-container{
+  height: 420px;
+  width:350px;
+  background:rgba(255, 255, 255, 0.92);
+  backdrop-filter:blur(5px);
+  padding:30px 20px 30px 20px;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* TITLE */
+.create-event-container h2{
+  margin-top: -16px;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+/* INPUTS */
+.create-event-container input,
+.create-event-container textarea{
+  width:100%;
+  box-sizing: border-box;
+  padding:8px;
+  margin-bottom:10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+/* TEXTAREA SIZE */
+.create-event-container textarea{
+  resize:none;
+  height:60px;
+}
+
+.create-event-container form{
+  display: flex;
+  flex-direction: column;
+}
+
+/* LOCATION BOX */
+.location-box{
+  height: 190px;
+  background:#eaecf4;
+  padding:5px;
+  border-radius:6px;
+  margin-bottom:15px;
+}
+
+.location-box input{
+  margin-left: 5px;
+  width: 96%;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  display:block;
+  text-align:center;
+  margin-top:5px;
+  color:#555;
+  text-decoration:none;
+}
+
+.back-btn:hover{
+  text-decoration:underline;
+}
+
+/*Mobile Responsive for login page*/
+@media (max-width: 480px){
+
+.login-overlay{
+  width: 85%;
+  padding: 30px;
+}
+}
+
+/* Home page mobile responsive */
+@media (max-width:480px){
+
+/* Pink Top Left Blob */
+.home-body::before {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 600px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  border-radius: 50%;
+  top: -250px;
+  left: -150px;
+  z-index: 0;
+}
+/* Purple Bottom Blob */
+.home-body::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 580px;
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  border-radius: 50%;
+  bottom: -400px;
+  right: -200px;
+  z-index: 0;
+}
+
+.home-wrapper{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    min-height:100vh;
+}
+
+/* TEXT SECTION */
+
+.home-left{
+    padding-right:20px;
+    margin-top:240px;
+}
+
+.hero-title{
+    font-size:28px;
+    line-height:1.3;
+}
+
+.hero-sub{
+    font-size:15px;
+    margin-top:15px;
+}
+
+/* BUTTONS */
+
+.home-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:20px;
+}
+
+.home-buttons a{
+    padding:10px 18px;
+    font-size:14px;
+}
+
+.home-body{
+  margin-left:-50px;
+}
+/* IMAGE */
+
+.home-right{
+    position:absolute;
+    bottom:115px;
+    right:-105px;
+}
+
+.home-right img{
+    width:280px;
+}
+}
+
+/*Mobile Responsive for Register page*/
+@media (max-width:480px){
+
+.register-card{
+  width:320px;
+  padding:20px;
+}
+
+.register-card h2{
+  font-size:22px;
+}
+
+.register-card label{
+  font-size:14px;
+}
+
+.register-card input{
+  padding:8px;
+  font-size:14px;
+}
+
+.register-card button{
+  padding:10px;
+  font-size:15px;
+}
+}
+
+
+/*Mobile Responsive for Dashboard page*/
+@media (max-width:768px){
+
+/* Stack layout vertically */
+
+.dashboard-content{
+  flex-direction:column;
+}
+
+/* Sidebar becomes full width */
+
+.event-sidebar{
+  width:100%;
+  max-height:250px;
+  overflow-y:auto;
+}
+
+/* Map height reduced */
+
+#map{
+  height:350px;
+  margin-top: -15px;
+}
+
+/* Top section stacked */
+
+.dashboard-top{
+  padding: 20px;
+  display:flex;
+  flex-direction:column;
+  height: 150px;
+  gap:10px;
+}
+.dashboard-top h1{
+  font-size:18px;
+}
+.dashboard-top h2{
+  font-size:18px;
+  margin-top: -10px;
+}
+/* Buttons side by side */
+
+.top-buttons{
+  display:flex;
+  gap:10px;
+  height: 10px;
+}
+
+.top-buttons a{
+  flex:1;
+  align-items: center;
+  text-align:center;
+  height: 12px;
+  width: 12px;
+  font-size: 13px;
+}
+
+.event-sidebar h3{
+  margin-top: -7px;
+  font-size:16px;
+}
+
+.event-card{
+  margin-top: -20px;
+  padding: -30px;
+}
+
+.event-card form{
+  margin-top: -15px;
+  
+}
+}
+
+/*Responsive for create-event page*/
+@media (max-width:480px){
+
+.create-event-container{
+  width:75%;
+  height:auto;
+  padding:18px;
+}
+
+.create-event-container h2{
+  margin-top: 1px;
+  font-size:22px;
+}
+
+.create-event-container input,
+.create-event-container textarea{
+  padding:8px;
+  font-size:14px;
+}
+
+.create-event-container textarea{
+  height:55px;
+}
+
+.location-box{
+  padding:8px;
+  font-size:14px;
+}
+
+.btn-sec3{
+  padding:10px;
+  font-size:15px;
+}
+
+.back-btn{
+  font-size:14px;
+}
+
+}
+
+/*time stamp*/
+.event-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:6px;
+}
+
+.event-time{
+  margin-top: 5px;
+  margin-right: 20px;
+  font-size:12px;
+  color:#555;
+}
+

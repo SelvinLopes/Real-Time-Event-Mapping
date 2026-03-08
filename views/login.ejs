@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="login-body">
+
+  <div class="login-overlay">
+    <div class="login-box">
+      
+      <% if (typeof error !== "undefined") { %>
+        <div id="successBox" class="error-box"><%= error %></div>
+      <% } %>
+
+      <h2>Login</h2>
+
+      <form action="/login" method="POST">
+        <input type="email" name="username" placeholder="Email" required>
+        <br><br>
+        <input type="password" name="password" placeholder="Password" required>
+        <br><br>
+        <button class="btn-secondary2" type="submit">Login</button>
+      </form>
+
+      <p>Don't have an account? <a href="/register">Register</a></p>
+    </div>
+  </div>
+
+  <script>
+  const successBox = document.getElementById("successBox");
+
+  if (successBox) {
+    setTimeout(() => {
+      successBox.style.opacity = "0";
+
+      setTimeout(() => {
+        successBox.style.display = "none";
+      }, 500);
+
+    }, 4000);
+  }
+</script>
+</body>
+</html>

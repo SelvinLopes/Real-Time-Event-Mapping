@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="register-body">
+
+<div class="register-overlay">
+
+  <div class="register-card">
+
+<% if (typeof error !== "undefined") { %>
+  <div id="successBox" class="error-box"><%= error %></div>
+<% } %> <!--if error does not exists then show undefined, and if exists show variable error-->
+
+<h2>Register</h2>
+
+<form action="/register" method="POST">
+
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="Enter your full name" required>
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+
+    <label>Confirm Password</label>
+    <input type="password" name="confirmPassword" required>
+
+    <button class="btn-sec3" type="submit">Register</button>
+
+</form>
+
+<p class="auth-footer">
+    Already have an account?
+    <a href="/login">Login</a>
+</p>
+</div>
+</div>
+
+<script>
+  const successBox = document.getElementById("successBox");
+
+  if (successBox) {
+    setTimeout(() => {
+      successBox.style.opacity = "0";
+
+      setTimeout(() => {
+        successBox.style.display = "none";
+      }, 500);
+
+    }, 4000);
+  }
+</script>
+</body>
+</html>

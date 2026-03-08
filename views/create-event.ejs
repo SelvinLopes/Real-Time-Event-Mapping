@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Event</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="create-event-body">
+  <div class="create-event-container">
+    <% if (typeof error !== "undefined") { %>
+      <div id="successBox" class="error-box"><%= error %></div>
+    <% } %>
+    
+<h2>Create Event</h2>
+<form action="/create-event" method="POST">
+  <input type="text" name="title" placeholder="Event Title" required>
+
+  <textarea name="description" placeholder="Description" required></textarea>
+
+  <div class="location-box">
+  <p><strong>Selected Location:</strong></p>
+  <p>latitude: <input type="text" value="<%= latitude %>" readonly></p>
+  <p>longitude: <input type="text" value="<%= longitude %>" readonly></p>
+  </div>
+
+  <!-- Hidden inputs that actually send data -->
+  <input type="hidden" name="latitude" value="<%= latitude %>">
+  <input type="hidden" name="longitude" value="<%= longitude %>">
+  
+  <button type="submit" class="btn-sec3">Create</button>
+</form>
+
+<a href="/dashboard" class="back-btn">Back to Dashboard</a>
+</div>
+
+<script>
+  const successBox = document.getElementById("successBox");
+
+  if (successBox) {
+    setTimeout(() => {
+      successBox.style.opacity = "0";
+
+      setTimeout(() => {
+        successBox.style.display = "none";
+      }, 500);
+
+    }, 4000);
+  }
+</script>
+</body>
+</html>

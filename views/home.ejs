@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="home-body"> <!--home page -> you click login -> req sended to server index.js -> he renders login.ejs -> now whatever user writes over there will be fetched by server  POST-->
+    <div class="home-wrapper">
+        <!-- LEFT CONTENT -->
+        <div class="home-left">
+        <h1 class="hero-title">Explore Events In Real Time</h1>
+        <p class="hero-sub">
+        Create and explore location-based events in real time.
+        See what’s happening near you and connect instantly.
+        </p>
+
+        <div class="home-buttons">
+            <a href="/register" class="btn-primary">Register</a>
+            <a href="/login" class="btn-secondary">Login</a>
+        </div>
+        
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="home-right">
+            <img src="/assets/homepageIMG.png " alt="Map Preview">
+        </div>
+    </div>
+</body>
+</html>
+<!--so home page is live, if user clicks on button login , req goes to server i.e. my index.js with checking for /login , so express server renders login.ejs file m i right? and i fuser clicks on register button, req goes to /register path, and server renders register.ejs right?-->

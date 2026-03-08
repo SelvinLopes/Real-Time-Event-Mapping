@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body class="dashboard-body">
+
+<% if (typeof success !== "undefined") { %>
+  <div id="successBox" class="success-box">
+    <%= success %>
+  </div>
+<% } %>
+
+<div class="dashboard-container">
+
+  <!-- TOP PANEL -->
+  <div class="dashboard-top">
+
+      <h1>Welcome, <%= username %></h1>
+      <h2>Dashboard</h2>
+      <div class="top-buttons">
+          <a href="/logout" class="btn-secondary">Logout</a>
+          <a href="/create-event" class="btn-primary">+ Create Event</a>
+      </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+<div class="dashboard-content">
+
+  <!-- EVENT SIDEBAR -->
+  <div class="event-sidebar">
+
+    <h3>Your Events</h3>
+
+    <% userEvents.forEach(event => { %>
+
+      <div class="event-card"
+           data-lat="<%= event.latitude %>"
+           data-lng="<%= event.longitude %>">
+
+        <b><%= event.title %></b>
+        <p><%= event.description %></p>
+
+        <div class="event-actions">
+        <form action="/delete-event/<%= event.id %>" method="POST">
+          <button class="delete-btn">Delete</button>
+        </form>
+        <span class="event-time">
+          <%= new Date(event.created_at).toLocaleString([], {
+            day: '2-digit', month: 'short' , hour: '2-digit', minute: '2-digit'}) %>
+        </span>
+        </div>
+      </div>
+
+    <% }) %>
+
+  </div>
+
+  <!-- MAP SECTION -->
+  <div class="dashboard-map">
+      <div id="map"></div>
+  </div>
+
+</div>
+
+
+<!-- Socket.IO -->
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  const successBox = document.getElementById("successBox");
+  const socket = io();
+  // Initialize map
+  const map = L.map('map').setView([19.0760, 72.8777], 11); // Mumbai default L.map('map') → Create map inside <div id="map">[19.0760, 72.8777] → Latitude & Longitude (Mumbai)12 → Zoom level
+  
+    // Instruction popup
+  const helpPopup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  className: "map-help-popup"
+  })
+  .setLatLng([19.0831, 72.8003])
+  .setContent("📍 Click anywhere on the map to create an event")
+  .openOn(map);
+
+  // Hide popup after 5 seconds
+  setTimeout(() => {
+    map.closePopup(helpPopup);
+    }, 5000);
+    document.querySelectorAll(".event-card").forEach(card => {
+
+    card.addEventListener("click", function(){
+
+    const lat = this.dataset.lat;
+    const lng = this.dataset.lng;
+
+    map.setView([lat, lng], 15);
+
+  });
+
+});
+
+  const events = JSON.parse('<%- JSON.stringify(events) %>');
+  const eventIcon = L.icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+    });
+
+    events.forEach(event => {
+      if(event.latitude && event.longitude){
+
+        const marker = L.marker(
+        [
+        parseFloat(event.latitude),
+        parseFloat(event.longitude)
+      ],
+      { icon: eventIcon, eventId: event.id }
+      ).addTo(map);
+
+    marker.bindPopup(`
+      <b>${event.title}</b><br>
+      ${event.description}
+    `);
+
+    marker.on("mouseover", function(){
+      this.openPopup();
+    });
+
+    marker.on("mouseout", function(){
+      this.closePopup();
+    });
+  }
+});
+// Real-time events
+socket.on("new-event", (event) => {
+
+  if(event.latitude && event.longitude){
+
+    const marker = L.marker(
+      [
+        parseFloat(event.latitude),
+        parseFloat(event.longitude)
+      ],
+      { icon: eventIcon, eventId: event.id }
+    ).addTo(map);
+
+    marker.bindPopup(`
+      <b>${event.title}</b><br>
+      ${event.description}
+    `);
+
+    marker.on("mouseover", function(){
+      this.openPopup();
+    });
+
+    marker.on("mouseout", function(){
+      this.closePopup();
+    });
+
+  }
+});
+
+  socket.on("delete-event", (eventId) => {
+
+  map.eachLayer(layer => {
+
+    if(layer.options && layer.options.eventId == eventId){
+      map.removeLayer(layer);
+    }
+
+  });
+
+});
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  //click map -->  create event
+  map.on('click', function(e) {
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+
+    // Redirect to create-event page with coordinates
+    window.location.href = `/create-event?lat=${lat}&lng=${lng}`; //user clicks in dashboard.ejs -- makes request to /get route, it renders it to user -- by opening create-event.ejs -- then sends /post of create-event.
+  });
+
+  if (successBox) {
+    setTimeout(() => {
+      successBox.style.opacity = "0";
+
+    setTimeout(() => {
+      successBox.style.display = "none";
+      }, 500);
+
+    }, 4000);
+  }
+</script>
+</body>
+</html>
