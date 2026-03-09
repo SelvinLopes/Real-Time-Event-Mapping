@@ -28,11 +28,7 @@ app.use(  //For every user, create a memory box (session).
 );
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database:"fullStack",
-  password:"rakuten@123#",
-  port:"5432"
+  connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }
 });
 db.connect();
 
