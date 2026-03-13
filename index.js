@@ -88,8 +88,8 @@ app.get("/dashboard", async (req, res) => {
     });
 
   } catch (err) {
-    console.log(err);
-    res.send("Error loading dashboard");
+    console.log("ERROR: ", err);
+    res.send("Error occurred");
   }
 });
 
@@ -164,7 +164,8 @@ app.post("/register", async (req, res) => {
     }
   }
   catch (err) {
-    console.log("There is an Error!");
+    console.log("ERROR: ", err);
+    res.send("Error occurred");
   }
 });
 
@@ -195,7 +196,8 @@ app.post("/login", async (req, res) => {
     }
   }
   catch (err) {
-    console.log("There is an Error!");
+    console.log("ERROR: ", err);
+    res.send("Error occurred");
   }
 });
 
@@ -231,7 +233,8 @@ app.post("/create-event", async (req, res) => {
     
   }
   catch (err) {
-    console.log("There is an Error!");
+    console.log("ERROR: ", err);
+    res.send("Error occurred");
   }
 });
 
