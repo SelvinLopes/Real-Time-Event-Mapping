@@ -12,6 +12,7 @@ const port = process.env.PORT || 3000;
 const server = http.createServer(app);
 const io = new Server(server);
 
+
 io.on("connection", (socket) => {
   console.log("User connected: ",
     socket.id);
@@ -28,7 +29,11 @@ app.use(  //For every user, create a memory box (session).
 );
 
 const db = new pg.Client({
-  connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }
+  connectionString: 
+  process.env.DATABASE_URL,
+   ssl: { 
+    rejectUnauthorized: false 
+  }
 });
 db.connect();
 
