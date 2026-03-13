@@ -122,8 +122,8 @@ app.post("/delete-event/:id", async (req, res) => {
     res.redirect("/dashboard");
 
   } catch (err) {
-    console.log(err);
-    res.send("Error deleting event");
+    console.log("ERROR: ", err);
+    res.send("Error occurred");
   }
 
 });
