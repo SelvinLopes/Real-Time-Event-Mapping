@@ -13,3 +13,4 @@ CREATE TABLE events (
     created_by VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+

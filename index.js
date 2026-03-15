@@ -203,7 +203,9 @@ app.post("/login", async (req, res) => {
 
 //Post Inside website for POST dashboard /create-event
 app.post("/create-event", async (req, res) => {
-  const { title, description, latitude, longitude } = req.body;
+  let { title, description, latitude, longitude } = req.body;
+  latitude = latitude ? parseFloat(latitude) : null;
+  longitude = longitude ? parseFloat(longitude) : null;
   
   try{
     const checkResult = await db.query("SELECT * FROM events WHERE title = $1", 
@@ -243,4 +245,5 @@ server.listen(port,()=>{
     console.log(`Server running on ${port}`);
 });
 
-    
+   
+//psql -h dpg-d6n9ta7tskes73earh00-a.singapore-postgres.render.com -U eventsuser eventsdb_ylr9
