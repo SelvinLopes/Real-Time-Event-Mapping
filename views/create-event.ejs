@@ -12,15 +12,15 @@
     <% } %>
     
 <h2>Create Event</h2>
-<form action="/create-event" method="POST">
+<form action="/create-event" method="POST" onsubmit="return validateLocation()">
   <input type="text" name="title" placeholder="Event Title" required>
 
   <textarea name="description" placeholder="Description" required></textarea>
 
   <div class="location-box">
-  <p><strong>Selected Location:</strong></p>
-  <p>latitude: <input type="text" value="<%= latitude %>" readonly required></p>
-  <p>longitude: <input type="text" value="<%= longitude %>" readonly required></p>
+  <p><strong>Selected Location:</strong>(click map first)</p>
+  <p>latitude: <input type="text" value="<%= latitude %>" readonly></p>
+  <p>longitude: <input type="text" value="<%= longitude %>" readonly></p>
   </div>
 
   <!-- Hidden inputs that actually send data -->
@@ -46,6 +46,19 @@
 
     }, 4000);
   }
+</script>
+<script>
+function validateLocation() {
+  const lat = document.querySelector('input[name="latitude"]').value;
+  const lng = document.querySelector('input[name="longitude"]').value;
+
+  if (!lat || !lng) {
+    alert("Please select a location on the map before creating an event.");
+    return false;
+  }
+
+  return true;
+}
 </script>
 </body>
 </html>
