@@ -18,9 +18,9 @@
   <textarea name="description" placeholder="Description" required></textarea>
 
   <div class="location-box">
-  <p><strong>Selected Location:</strong>(click map first)</p>
-  <p>latitude: <input type="text" value="<%= latitude %>" readonly></p>
-  <p>longitude: <input type="text" value="<%= longitude %>" readonly></p>
+  <p><strong>Selected Location:</strong>(Click map for coordinates)</p>
+  <p>latitude: <input id="latField" type="text" value="<%= latitude %>" readonly></p>
+  <p>longitude: <input id="lngField" type="text" value="<%= longitude %>" readonly></p>
   </div>
 
   <!-- Hidden inputs that actually send data -->
@@ -49,11 +49,11 @@
 </script>
 <script>
 function validateLocation() {
-  const lat = document.querySelector('input[name="latitude"]').value;
-  const lng = document.querySelector('input[name="longitude"]').value;
+  const lat = document.getElementById("latField").value;
+  const lng = document.getElementById("lngField").value;
 
   if (!lat || !lng) {
-    alert("Please select a location on the map before creating an event.");
+    alert("Please click on the map to select a location.");
     return false;
   }
 
